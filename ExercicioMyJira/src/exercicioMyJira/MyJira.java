@@ -16,12 +16,24 @@ public class MyJira {
 		this.equipe.add(novoDev);
 	}
 	
-	public void removeDev(String nome, String time) {
-		Dev demitido = new Dev(nome, time);
+	public void removeDev(String nome) {
 		for (Dev dev : this.equipe) {
-			if (demitido.equals(dev)) {
+			if (dev.getNome() == nome) {
 				this.equipe.remove(dev);
 			}
 		}
 	}
+	public void addTask(String nome, int prazo) {
+		Task novaTask = new Task(nome, prazo);
+		this.backlog.add(novaTask);
+	}
+	public void removeTask(String nome) {
+		for (Task task : this.backlog) {
+			if (task.getTitulo() == nome) {
+				this.backlog.remove(task);
+			}
+		}
+	}
+	}
+	
 }
