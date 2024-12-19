@@ -5,7 +5,7 @@ import java.util.*;
 public class Dev {
 	private String nome;
 	private String time;
-	private ArrayList<Task> tarefas;
+	private Set<Task> tarefas;
 	
 	public Dev(String nome, String time) {
 		this.nome = nome;
@@ -26,8 +26,16 @@ public class Dev {
 	public String getTime() {
 		return this.time;
 	}
-	public ArrayList<Task> getTarefas() {
+	public Set<Task> getTarefas() {
 		return this.tarefas;
+	}
+	public Task getTarefa(String titulo) {
+		for (Task tarefa : this.tarefas) {
+			if (tarefa != null && tarefa.getTitulo() == titulo) {
+				return tarefa;
+			}
+		}
+		return null;
 	}
 	
 }
