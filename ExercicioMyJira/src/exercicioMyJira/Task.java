@@ -42,6 +42,33 @@ public class Task {
 		this.status = novoStatus;
 	}
 	private void attStatus() {
-		this.status = (this.desenvolvedor != null)? "Em andamento" : "Não iniciada";
+		this.status = (this.desenvolvedor != null)? "Em andamento" : "Não-iniciada";
+	}
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(this.titulo + "\nDesenvolvedor: ");
+		if(this.desenvolvedor == null) {
+			sb.append("Sem desenvolvedor.");
+		} else {
+			sb.append(this.desenvolvedor.getNome());
+		}
+		sb.append("\nTempo para execução: " + this.prazo);
+		sb.append("\nStatus: " + this.status);
+		String taskString = sb.toString();
+		return taskString;
+	}
+	@Override
+	public boolean equals(Object o) {
+		if (!(o instanceof Task)) return false;
+		if (o == this) return true;
+		
+		Task oTask = (Task) o;
+		return (oTask.getTitulo() == this.titulo);
+	}
+	@Override
+	public int hashCode() {
+		int hash = 19;
+		return 31 * hash + this.titulo.hashCode();
 	}
 }

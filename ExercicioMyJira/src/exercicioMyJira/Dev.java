@@ -37,5 +37,21 @@ public class Dev {
 		}
 		return null;
 	}
-	
+	@Override
+	public String toString() {
+		return this.nome + " : " + this.time;
+	}
+	@Override
+	public boolean equals(Object o) {
+		if (!(o instanceof Dev)) return false;
+		if (o == this) return true;
+		
+		Dev oDev = (Dev) o;
+		return (oDev.getNome() == this.nome);
+	}
+	@Override
+	public int hashCode() {
+		int hash = 19;
+		return 31 * hash + this.nome.hashCode();
+	}
 }
