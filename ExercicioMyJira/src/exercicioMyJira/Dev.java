@@ -18,7 +18,11 @@ public class Dev {
 		this.tarefas.add(tarefa);
 	}
 	public void removeTask(Task tarefa) {
-		this.tarefas.remove(tarefa);
+		if(tarefa != null) {
+			this.tarefas.remove(tarefa);
+		} else {
+			this.tarefas.clear();
+		}
 	}
 	public String getNome() {
 		return this.nome;
@@ -29,7 +33,17 @@ public class Dev {
 	public Set<Task> getTarefas() {
 		return this.tarefas;
 	}
+	public String mostraTarefas() {
+		if(tarefas.isEmpty()) return "Não há tarefas para esse desenvolvedor";
+		StringBuilder sb = new StringBuilder();
+		for (Task tarefa : this.tarefas) {
+				sb.append(tarefa.toString() + "\n");
+		}
+		String relatorio = sb.toString();
+		return relatorio;
+	}
 	public Task getTarefa(String titulo) {
+		if(tarefas.isEmpty()) return null;
 		for (Task tarefa : this.tarefas) {
 			if (tarefa != null && tarefa.getTitulo() == titulo) {
 				return tarefa;
